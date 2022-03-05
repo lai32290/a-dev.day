@@ -9,7 +9,7 @@ export type Post = {
   title: string;
 }
 
-const postsPath = path.join(__dirname, '..', 'posts');
+const postsPath = path.resolve(__dirname, '../posts');
 
 function isValidPostAttributes(attributes) {
   return attributes?.meta?.title;
