@@ -5,7 +5,7 @@
     }
   },
   "functions": {
-    "app/index.js": {
+    "api/index.js": {
       "includeFiles": "./posts/**"
     }
   }
