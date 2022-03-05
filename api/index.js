@@ -318,16 +318,21 @@ var require_remix = __commonJS({
   }
 });
 
-// <stdin>
-var stdin_exports = {};
-__export(stdin_exports, {
+// server.js
+var server_exports = {};
+__export(server_exports, {
+  default: () => server_default
+});
+init_react();
+var import_vercel = require("@remix-run/vercel");
+
+// server-entry-module:@remix-run/dev/server-build
+var server_build_exports = {};
+__export(server_build_exports, {
   assets: () => assets_manifest_default,
   entry: () => entry,
   routes: () => routes
 });
-init_react();
-
-// server-entry-module:@remix-run/dev/server-build
 init_react();
 
 // app/entry.server.tsx
@@ -539,13 +544,12 @@ var routes = {
     module: routes_exports
   }
 };
-module.exports = __toCommonJS(stdin_exports);
+
+// server.js
+var server_default = (0, import_vercel.createRequestHandler)({ build: server_build_exports, mode: "production" });
+module.exports = __toCommonJS(server_exports);
 // Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  assets,
-  entry,
-  routes
-});
+0 && (module.exports = {});
 /**
  * @remix-run/node v1.2.3
  *
