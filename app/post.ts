@@ -9,7 +9,7 @@ export type Post = {
   title: string;
 }
 
-const postsPath = process.env.NODE_ENV === "development" ? path.resolve(__dirname, '../posts') : path.resolve(__dirname, '../../../posts');
+const postsPath = process.env.NODE_ENV === "development" ? path.resolve(__dirname, '../posts') : path.resolve(__dirname, '../../posts');
 
 function isValidPostAttributes(attributes) {
   return attributes?.meta?.title;
