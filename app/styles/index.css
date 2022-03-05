@@ -1,0 +1,10 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  background-color: blue;
+  justify-content: space-between;
+}
+
+.navbar {
+  padding: 10px 20px;
+}
