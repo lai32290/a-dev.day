@@ -21,6 +21,9 @@ export async function getPosts() {
     await fs.readdir(path.resolve(__dirname)),
     await fs.readdir(path.resolve(__dirname, '..')),
     await fs.readdir(path.resolve(__dirname, '../..')),
+    await fs.readdir(path.resolve(__dirname, '../../..')),
+    await fs.readdir(path.resolve(__dirname, '../../../..')),
+    await fs.readdir(path.resolve(__dirname, '../../../../..')),
   );
   const dir = await fs.readdir(postsPath);
 
