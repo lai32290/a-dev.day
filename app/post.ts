@@ -10,20 +10,16 @@ export type Post = {
 }
 
 
-const postsPath = process.env.NODE_ENV === "development" ? path.resolve(__dirname, '../posts') : path.resolve(__dirname, '../../posts');
+const postsPath = path.resolve(__dirname, '../posts');
 
 function isValidPostAttributes(attributes) {
   return attributes?.meta?.title;
 }
 
 export async function getPosts() {
-  console.log('aaaaaa',
-    await fs.readdir(path.resolve(__dirname)),
+  console.log('lllllll',
     await fs.readdir(path.resolve(__dirname, '..')),
-    await fs.readdir(path.resolve(__dirname, '../..')),
-    await fs.readdir(path.resolve(__dirname, '../../..')),
-    await fs.readdir(path.resolve(__dirname, '../../../..')),
-    await fs.readdir(path.resolve(__dirname, '../../../../..')),
+    await fs.readdir(path.resolve(__dirname, '../posts')),
   );
   const dir = await fs.readdir(postsPath);
 
