@@ -13,7 +13,7 @@ export default function Index() {
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
-      <div className="bg-gray-600 text-slate-50 px-60 py-7 grow">
+      <div className="bg-gray-600 text-slate-50 px-5 md:px-60 py-7 grow">
         <ul>
           {posts.map((post) => (
             <li key={post.slug} className="flex justify-between">

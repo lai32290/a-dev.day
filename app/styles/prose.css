@@ -63,6 +63,7 @@ pre {
   padding: 10px 15px;
   background-color: white;
   margin: 5px 0;
+  overflow: auto;
 }
 
 .prose pre[data-line-numbers='true']:not([data-lang='sh']) {

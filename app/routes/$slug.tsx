@@ -27,7 +27,7 @@ export default function PostSlug() {
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
-      <main className="bg-gray-600 text-slate-50 px-60 py-7 grow" id="post-content">
+      <main className="bg-gray-600 text-slate-50 px-5 md:px-60 py-7 grow" id="post-content">
         <h1>{ post.title }</h1>
 
         <div className="prose" dangerouslySetInnerHTML={{ __html: post.html }} />
