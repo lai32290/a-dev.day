@@ -17,10 +17,6 @@ function isValidPostAttributes(attributes) {
 }
 
 export async function getPosts() {
-  console.log('lllllll',
-    await fs.readdir(path.resolve(__dirname, '..')),
-    await fs.readdir(path.resolve(__dirname, '../posts')),
-  );
   const dir = await fs.readdir(postsPath);
 
   return Promise.all(
