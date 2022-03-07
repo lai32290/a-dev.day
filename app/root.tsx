@@ -8,11 +8,13 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 import styles from "./styles/app.css"
+import prismStyles from "./styles/prism.css"
 
 
 export function links() {
   return [
-    { rel: 'stylesheet', href: styles }
+    { rel: 'stylesheet', href: styles },
+    { rel: 'stylesheet', href: prismStyles },
   ]
 }
 

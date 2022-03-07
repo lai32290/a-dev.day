@@ -2,8 +2,15 @@ import path from 'path';
 import dayjs from 'dayjs';
 import invariant from 'tiny-invariant';
 import { marked } from 'marked';
+import prism from 'prismjs';
 import fs from 'fs/promises';
 import parseFrontMatter from 'front-matter';
+
+marked.setOptions({
+  highlight (code, lang) {
+    return prism.highlight(code, prism.languages[lang], lang);
+  }
+});
 
 export type Post = {
   slug: string;

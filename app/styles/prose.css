@@ -59,6 +59,12 @@ pre {
   color: var(--color-blueGray-500);
 }
 
+.prose pre {
+  padding: 10px 15px;
+  background-color: white;
+  margin: 5px 0;
+}
+
 .prose pre[data-line-numbers='true']:not([data-lang='sh']) {
   padding-left: 0rem;
   padding-right: 0rem;
