@@ -10,11 +10,10 @@ export async function loader() {
 
 export default function Index() {
   const posts = useLoaderData<Post[]>();
-
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
-      <div className="bg-gray-600 text-slate-50 px-14 py-7 grow">
+      <div className="bg-gray-600 text-slate-50 px-60 py-7 grow">
         <ul>
           {posts.map((post) => (
             <li key={post.slug} className="flex justify-between">
@@ -22,7 +21,7 @@ export default function Index() {
                 { post.title }
               </Link>
 
-              <span>4 March, 2022</span>
+              <span>{ post.createdAt }</span>
             </li>
           ))}
         </ul>

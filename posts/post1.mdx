@@ -1,8 +1,32 @@
 ---
 meta:
-    title: Test Post 1
+    title: How to replace text in Javascript?
+    createdAt: 2022-03-04
 ---
 
-# Hello Post 123
+During our daily work, it’s very common handle text and one of the most case is replacing a parte of the text from X to Y.
 
- This is  a test post
+So in Javascript we already have a function to do this in very simple way.
+
+```javascript
+const text = "I love Java Java Java";
+text.replace("Java", "Javascript"); // "I love Javascript Java Java"
+```
+
+In the code above we used the function `replace`, so we replaced the first “Java” into “Javascript”.
+
+But what if we need to replace every instances it’s necessary to use Regex.
+
+```javascript
+const text = "hello hello hello";
+text.replace(/hello/g, "bye"); // "bye bye bye"
+```
+
+Regex are great! Regex are super powerful! You have a problem, so you can use Regex and now you have two problems \o/ Just kidding, it’s super awesome, but it can be tricky sometime, so in 2022, we have a new function called `replaceAll` to achieve the same effect in a super easy way.
+
+```javascript
+const text = "hello hello hello";
+text.replaceAll("hello", "bye"); // "bye bye bye"
+```
+
+I hope this content helps you.

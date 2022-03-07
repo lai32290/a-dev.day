@@ -1,8 +1,12 @@
+import { Link } from 'remix';
+
 export default function Footer() {
   return (
     <div className="px-10 py-4 bg-gray-700 text-slate-50 flex justify-between">
       <div className="text-3xl">
-        a dev.day
+        <Link to="/">
+          a dev.day
+        </Link>
       </div>
 
       <nav className="flex items-center">

@@ -1,4 +1,5 @@
 import path from 'path';
+import dayjs from 'dayjs';
 import invariant from 'tiny-invariant';
 import { marked } from 'marked';
 import fs from 'fs/promises';
@@ -16,6 +17,10 @@ function isValidPostAttributes(attributes) {
   return attributes?.meta?.title;
 }
 
+function formatDate(attributes) {
+  return dayjs(attributes.meta.createdAt).add(1, 'day').format('DD MMMM, YYYY');
+}
+
 export async function getPosts() {
   const dir = await fs.readdir(postsPath);
 
@@ -30,9 +35,12 @@ export async function getPosts() {
         `${filename} has bad meta data!`
       );
 
+      const createdAt = formatDate(attributes);
+
       return {
         slug: filename.replace(/\.mdx?$/, ''),
-        title: attributes.meta.title
+        title: attributes.meta.title,
+        createdAt
       };
     })
   );
@@ -49,9 +57,12 @@ export async function getPost(slug: string) {
   );
 
   const html = marked(body);
+  const createdAt = formatDate(attributes);
+
   return {
     slug,
     title: attributes.meta.title,
+    createdAt,
     html
   };
 }
