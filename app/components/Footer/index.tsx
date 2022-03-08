@@ -12,10 +12,14 @@ export default function Footer() {
       <nav className="flex items-center">
         <ul className="flex justify-between">
           <li className="pl-4">
-            <a href="#">Github</a>
+            <a target="_blank" href="https://github.com/lai32290">
+              Github
+            </a>
           </li>
           <li className="pl-4">
-            <a href="#">Linkedin</a>
+            <a target="_blank" href="https://www.linkedin.com/in/lai-xuancheng/">
+              Linkedin
+            </a>
           </li>
         </ul>
       </nav>
