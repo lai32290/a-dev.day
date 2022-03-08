@@ -66,6 +66,20 @@ pre {
   overflow: auto;
 }
 
+.prose p {
+  margin-top: 20px;
+}
+
+.prose ul {
+  margin-top: 20px;
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.prose li + li {
+  margin-top: 5px;
+}
+
 .prose pre[data-line-numbers='true']:not([data-lang='sh']) {
   padding-left: 0rem;
   padding-right: 0rem;
