@@ -25,7 +25,7 @@ function isValidPostAttributes(attributes) {
 }
 
 function formatDate(attributes) {
-  return dayjs(attributes.meta.createdAt).add(1, 'day').format('DD MMMM, YYYY');
+  return dayjs(attributes.meta.createdAt).format('DD MMMM, YYYY');
 }
 
 export async function getPosts() {
