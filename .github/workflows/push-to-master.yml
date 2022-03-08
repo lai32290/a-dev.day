@@ -29,5 +29,5 @@ jobs:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         with:
           args:
-            'deploy --strategy rolling'
+            'deploy --strategy rolling -t ${{ secrets.FLY_API_TOKEN }}'
 
