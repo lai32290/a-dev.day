@@ -31,7 +31,7 @@ function formatDate(attributes) {
 export async function getPosts() {
   const dir = await fs.readdir(postsPath);
 
-  return Promise.all(
+  const posts = await Promise.all(
     dir.map(async filename => {
       const file = await fs.readFile(path.join(postsPath, filename));
 
@@ -51,6 +51,13 @@ export async function getPosts() {
       };
     })
   );
+
+  return posts.sort((post1, post2) => {
+    if (dayjs(post1.createdAt) < dayjs(post2.createdAt)) {
+      return 1;
+    }
+    return -1;
+  });
 }
 
 export async function getPost(slug: string) {
