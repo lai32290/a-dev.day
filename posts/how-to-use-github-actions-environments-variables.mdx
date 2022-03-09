@@ -1,0 +1,87 @@
+---
+meta:
+    title: How to Use GitHub Actions Environments Variables 
+    createdAt: 2022-03-09
+---
+
+Nowadays, it is very common that our project be self dependent, if you are creating a project to be released and sell, usually you will have to connect it with some service, like SendGrid, DataDog, Sentry.io, a service to send notification, etc, because most of the time it is not worth for your company to create and maintain those services which are not your main product.
+
+With many connected services means many of authentication tokens, those services need to know how you are so they can server you and this token is your ID, it’s very important to not hardcoded it in your codebase, because it could be accidentally commit and be expose it to someone else, your boss wont like it, so the good practice is to set these tokens in your environment variable and the project get it from there.
+
+Since it’s a good practice, most of the CI/CD services also support the same approach, including GitHub Action.
+
+## Setting Environment Variables in GitHub Project
+
+So at first, we will have to set our env variables in the project and it’s super simple to do.
+
+Access your project in GitHub and go on **Settings** > **Environments** > [ select an env ]:
+
+![List of environments in settings page](/images/how-to-use-github-actions-environments-variables/list-of-environments-in-settings-page.png)
+
+So you can add a Secret here, which’s mean your environment variable
+
+![GitHub Actions Environment Variables Settings Page](/images/how-to-use-github-actions-environments-variables/environment-setting-page.png)
+
+## Create a GitHub Actions
+
+Since that we’re going to use it in a GitHub Actions, so let’s create one at first!
+
+To create a GitHub Actions, it’s necessary to create a folder named `.github/workflows` (it has to be this name), in the root of your project.
+
+So inside this folder, let’s create a `my-test-workflow.yml` with the content bellow:
+
+```text
+name: My Test Workflow
+
+on:
+	push:
+		branches:
+			- master
+
+jobs:
+	deploy:
+		environment: Production
+		runs-on: ubuntu-latest
+		steps:
+			- name: Print my variable
+				env:
+					MY_TEST_VAR: ${{ secrets.MY_TEST_VAR }}
+				run: echo $MY_TEST_VAR
+```
+
+Once you commit this file and push it to the GitHub repository, it’ll be able to see the action running and track them in the Actions tabs, like this:
+
+![Actions Workflows Page](/images/how-to-use-github-actions-environments-variables/actions-workflow-page.png)
+
+There are a few points in the code above to pay attention.
+
+As you can see, we have set the `Production` as `environment`:
+
+```text
+...
+jobs:
+	deploy:
+		environment: Production
+		...
+```
+
+As we can create many environment in the project Settings page, like `staging`, `homolog`, etc, so setting this property, we are saying to the GitHub Actions which one of them it should consider.
+
+The second point is the `env` property in `step`:
+
+```text
+...
+jobs:
+	deploy:
+		...
+		steps:
+			- name: Print my variable
+				env:
+					MY_TEST_VAR: ${{ secrets.MY_TEST_VAR }}
+				run: echo $MY_TEST_VAR
+```
+
+All of our tokens are saved in the `secrets` object, provided by runner, to be able to access them in our automation script it’s necessary to map them using the attribute: `env`, after that we’re ready to go, the `echo $MY_TEST_VAR` should print out the value you set in the settings page.
+
+I got many hours to get this things to work and I hope this post can save your precious hours that I already spent on.
+
