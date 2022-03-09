@@ -15,6 +15,7 @@ marked.setOptions({
 export type Post = {
   slug: string;
   title: string;
+  createdAt: string;
 }
 
 
