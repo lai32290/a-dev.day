@@ -19,7 +19,7 @@ export function links() {
 }
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return { title: "a dev.day" };
 };
 
 export default function App() {
