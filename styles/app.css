@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import "./$slug.css";
+@import "./index.css";
+@import "./prism.css";
+@import "./prose.css";

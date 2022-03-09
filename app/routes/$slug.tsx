@@ -22,7 +22,7 @@ export function links() {
 }
 
 export function meta({ data }: any) {
-  return { title: data.title };
+  return { title: 'hfdusas' };
 };
 
 export default function PostSlug() {

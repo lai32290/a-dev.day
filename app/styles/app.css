@@ -541,14 +541,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 2.5rem;
 }
 
-.leading-8 {
-  line-height: 2rem;
-}
-
-.leading-9 {
-  line-height: 2.25rem;
-}
-
 .leading-10 {
   line-height: 2.5rem;
 }
@@ -567,6 +559,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
 }
+
+@import "./$slug.css";
+
+@import "./index.css";
+
+@import "./prism.css";
+
+@import "./prose.css";
 
 @media (min-width: 768px) {
   .md\:px-60 {

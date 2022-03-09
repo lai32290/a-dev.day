@@ -4,12 +4,12 @@
 }
 
 #post-content h2 {
-  font-size: 3.75rem;
+  font-size: 2.75rem;
   line-height: 1;
 }
 
 #post-content h3 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 1;
 }
 
@@ -30,4 +30,14 @@
 
 #post-content p {
   font-size: 1.25rem;
+}
+
+#post-content img {
+  width: 100%;
+  max-width: 1000px;
+}
+
+#post-content p code {
+  background-color: hsl(217deg 15% 17%);
+  padding: 0 5px;
 }
