@@ -21,6 +21,10 @@ export function links() {
   }];
 }
 
+export function meta({ data }: any) {
+  return { title: data.title };
+};
+
 export default function PostSlug() {
   const post = useLoaderData();
 
