@@ -1,0 +1,134 @@
+---
+meta:
+    title: How To Use Map in Javascript
+    createdAt: 2022-03-13
+---
+
+In our daily job is super common that we have to deal with a list of data, as known as `array`, it represent a collection of same kind of information, this way, it makes very easy for us to handle each one of the itens, one by one.
+
+If it’s a list of number, we can duplicate each number in the list, if it’s a list of person name so we can add a prefix to each one of them, if it’s a list of object, we can add or remove properties to each one of the objects in the list or even replace all of them to something else (I know, I can’t se why to do this in a real world project).
+
+To do this, we’re using the function `map`, it’s a powerful function and it exists in probably any of program languages, but in this post we’re using Javascript, which’s my favor one.
+
+In this post, I wanna try to explain to you how is the `map` function works and how to use map in a less technical way, at least in the first step.
+
+## How does function map works?
+
+Let’s start with the first example that we have above, going back to our math class at the school, supposing that your teacher Lucy give you 5 numbers, like `5, 3, 10, 8, 12`, so she asked you to find what is the double value of each one of them, what would you gonna do?
+
+Probably you’re going to pick the first number, the number `5` and multiply it with number `2`, so you the the result for the first number, then the 2nd, then the 3th and so on.
+
+Can you notice that you just did the same thing for all of numbers? You got the double value by multiplying them with number `2`, the number Lucy gave us could be `10`, it could be `100` or it could be `999`, no matter what’s the number, we always multiply it with number `2`, so we got the result, it’s a pattern.
+
+This is exactly what function `map` does, we define a pattern, so no matter what item we pass in the list to it, function `map` is going to apply that pattern to each item and give us a list with the result, so let me show you how to solve teacher Lucy’s question using Javascript.
+
+```javascript
+const numbersFromLucy = [5, 3, 10, 8, 12];
+
+function doubleNumberPattern(number) {
+	return number * 2;
+}
+
+const result = numbersFromLucy.map(doubleNumberPattern);
+
+console.log(result); // [10, 6, 20, 16, 24];
+```
+
+As you can see, we created a function named `doubleNumberPattern` which is receiving a number and multiply it with `2`, in the end we have a new list with the result of each number.
+
+I know this code looks so verbose, I did it on proposed to make the idea clearly, in real world project you can make it much shorter, for sure, like:
+
+```javascript
+const numbersFromLucy = [5, 3, 10, 8, 12];
+
+const result = numbersFromLucy.map(number => number * 2);
+
+console.log(result); // [10, 6, 20, 16, 24];
+```
+
+So we used arrow function to make our code much shorter and cleaner, this is a very common way that you are going to see people using.
+
+![https://media.giphy.com/media/3o72F5xIDp76AZifBe/giphy.gif](https://media.giphy.com/media/3o72F5xIDp76AZifBe/giphy.gif)
+
+The image above can represent `map` function pretty well, it apply the same action to each item, if you already got the point, you can stop reading here but we’re going to explorer a little bit more about some use cases for it.
+
+## Case 1 - Capitalizing list of names
+
+In the real world project, it’s very common that we have our users name saved in database and we need to show it once on the page, but unfortunately these name aren’t always formatted in the right way, some people typed all in lower case, others typed in all upper case, but we wanna to display it with only the first character in upper case, I know maybe we can achieve this using pure CSS, but let’s do this in Javascript this time. So let’s do it!
+
+```javascript
+const names = [ 'john', 'PAUL', 'mARia', 'AMy', 'PeTeR'];
+
+const capitalizedNames = names.map(name => {
+	const firstChar = name[0].toUpperCase();
+	const restOfName = name.slice(1).toLowerCase();
+
+	return `${firstChar}${restOfName}`;
+});
+
+console.log(capitalizedNames);
+// ['John', 'Paul', 'Maria', 'Amy', 'Peter']
+```
+
+In the code above we created a pattern (a function) which’s going to take the first char of name and turn it into upper case and turn the rest of part to lower case, so we put them together and using the `map` function we’re able to apply the function to each names.
+
+## Case 2 - Is the name in the blacklist
+
+What if we have a list of users and a blacklist to check? We can still use `map` to check if the user is in the blacklist and tag each one of them.
+
+```javascript
+const blacklist = ['John', 'Amy', 'Bruno', 'Emily'];
+const users = [
+	{ name: 'Paul' },
+	{ name: 'John' },
+	{ name: 'Jorge' },
+	{ name: 'Peter' },
+	{ name: 'Bruno' },
+	{ name: 'Josh' },
+];
+
+const taggedUsers = users.map(user => {
+	const inBlacklist = blacklist.includes(user.name);
+  return { ...user, inBlacklist };
+});
+console.log(taggedUsers);
+
+/*
+[
+	{ name: 'Paul', inBlacklist: false },
+	{ name: 'John', inBlacklist: true },
+	{ name: 'Jorge', inBlacklist: false },
+	{ name: 'Peter', inBlacklist: false },
+	{ name: 'Bruno', inBlacklist: true },
+	{ name: 'Josh', inBlacklist: false },
+]
+*/
+```
+
+In this example, we verified if the `user.name` is in the list of `blacklist` an do added it to a new property in the `user` object, so this info can be used later, since our focus is on the `map` function, so our example is finishing here.
+
+## Create  a verification based on the item position (index)
+
+Until now, we’ve been doing verifications based on itens from the list, I can say that already able to cover most of the cases but there’re still some cases that we wanna know what’s the position of the item to decide how to deal with it.
+
+In `map`, you’re not only receiving the item in the function parameter, there’s a second parameter available, which’s the index, I don’t have any useful example here, but let me just show you how is it works.
+
+```javascript
+const randomNumbers = [ 2, 3, 5, 10, 35 ];
+function multiplyWithCurrentPosition(number, index) {
+	return number * index;
+}
+
+const results = randomNumbers(multiplyWithCurrentPosition);
+
+console.log(results);
+// [ 0, 3, 10, 30, 140 ];
+```
+
+As you can see, the `multiplyWithCurrentPosition` is receiving `index` as second parameter and we just multiplied the number with index, so `2 * 0 = 0`, `3 * 1 = 3`, `5 * 2 = 10` and so on.
+
+Maybe this example is not very intuitive and not very useful, the focus of the example is just to show you that you can have `index` to do whatever you want.
+
+I tried to explain it creating relations to non tech stuffs, I hope this can help you to understand it
+
+If you liked my explanation, please share it with you friend or someone that might be interested too.
