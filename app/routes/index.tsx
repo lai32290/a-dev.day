@@ -3,6 +3,7 @@ import { getPosts } from '~/post'
 import type { Post } from "~/post";
 import Navbar from '~/components/Navbar';
 import Footer from '~/components/Footer';
+import Subscriber from "~/components/Subscriber";
 
 export async function loader() {
   return getPosts();
@@ -29,6 +30,7 @@ export default function Index() {
         </ul>
       </div>
 
+      <Subscriber />
       <Footer />
     </div>
   );

@@ -2,6 +2,7 @@ import { useLoaderData, Link } from 'remix';
 import invariant from 'tiny-invariant';
 import Navbar from '~/components/Navbar';
 import Footer from '~/components/Footer';
+import Subscriber from '~/components/Subscriber';
 import { getPost } from '~/post';
 import slugStyle from '~/styles/$slug.css';
 import proseStyle from '~/styles/prose.css';
@@ -36,6 +37,7 @@ export default function PostSlug() {
 
         <div className="prose" dangerouslySetInnerHTML={{ __html: post.html }} />
       </main>
+      <Subscriber />
       <Footer />
     </div>
   )
