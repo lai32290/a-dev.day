@@ -16,7 +16,9 @@ export default function Index() {
       <div className="bg-gray-600 text-slate-50 px-5 md:px-60 py-7 grow">
         <ul>
           {posts.map((post) => (
-            <li key={post.slug} className="flex justify-between leading-10">
+            <li
+              key={post.slug}
+              className="flex justify-between leading-10 flex-col-reverse md:flex-row mb-6 md:mb-1">
               <Link to={post.slug} className="text-2xl text-sky-200 underline">
                 { post.title }
               </Link>
