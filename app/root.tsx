@@ -9,6 +9,9 @@ import {
 import type { MetaFunction } from "remix";
 import styles from "./styles/app.css"
 import prismStyles from "./styles/prism.css"
+import Navbar from '~/components/Navbar';
+import Footer from '~/components/Footer';
+import Subscriber from "~/components/Subscriber";
 
 
 export function links() {
@@ -43,7 +46,15 @@ export default function App() {
         <Links />
       </head>
       <body className="h-screen">
-        <Outlet />
+        <div className="flex flex-col h-screen">
+          <Navbar />
+          <div className="bg-gray-600 text-slate-50 px-5 md:px-60 py-7 grow">
+            <Outlet />
+          </div>
+          <Subscriber />
+          <Footer />
+        </div>
+
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
