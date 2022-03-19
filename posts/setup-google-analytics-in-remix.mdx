@@ -1,0 +1,84 @@
+---
+meta:
+    title: Setup Google Analytics in Remix
+    createdAt: 2022-03-18
+---
+
+Goggle Analytics is a very important tool for any website that’s running seriously or with intention to monetize.
+
+Because it can bring you informations like where your visitors come from, how much time do they spend in your website, which country your visitors are from and much more.
+
+With these data you can know more about them, you’ll know better about your audiences to elaborate a strategy to help you grow the website or maybe you just wanna know how much people are visiting to keep you motivated to maintain it.
+
+So this post is to show you what you need to do in GA (Google Analytics) configurations panel and how to set it up in you site made on Remix, based on my own experiences.
+
+## Create Google Analytics Account
+
+First things first, to use GA, we need to create an account, it’s free, it’s awesome, so let’s do it.
+
+We go to the **Admin** panel and click on **+ Create Account** 
+
+![Create Google Analytics account](/images/setup-google-analytics-in-remix/create-account.png)
+
+So put a name to your account as you like, I put “a-dev.day” in my case, and we can go Next.
+
+![Set account information](/images/setup-google-analytics-in-remix/set-account-info.png)
+
+Now let’s put a property name, a property name could be a website, mobile app or blog, it’s associated with a unique tracking ID, in my case I put “blog”.
+
+![set property info](/images/setup-google-analytics-in-remix/set-property-info.png)
+
+The last step is to put information about your business and we’re done for this part.
+
+![set business info](/images/setup-google-analytics-in-remix/set-business-info.png)
+
+Bear with me, we’re almost done, the last thing to do in GA panel is to create Stream, click on “Web”
+
+![select stream](/images/setup-google-analytics-in-remix/select-stream.png)
+
+For here, you need put your site domain and a name to it, in my case is a-dev.day.
+
+![set stream info](/images/setup-google-analytics-in-remix/set-stream-info.png)
+
+Clicking on the “Global site tag(gtag.js) Use this if...
+We finally have the information what we need on hands, let’s just copy this code for now.
+
+![get google analytics custom code](/images/setup-google-analytics-in-remix/get-custom-code.png)
+
+## Setup Google Analytics to Remix
+
+Having the code from step before, let’s paste them in `app/root.tsx` like this:
+
+```javascript
+export default function App() {
+  return (
+    <html lang="en" >
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1234567890"></script>
+
+        <script dangerouslySetInnerHTML={{__html: `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1234567890');
+          `}} />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        Your app here
+      </body>
+    </html>
+  );
+}
+```
+
+As you can see, we have to use `<script dangerouslySetInnerHTML={{ _html: "...." }}></script>` to setup the custom code.
+
+That’s it? Yep! that’s all, we’re done! In a few days, GA’ll start to report info about the site.
+
+If you’re creating a project in Remix, like me, also needing Google Analytics, I hope this post can save you a few time.
