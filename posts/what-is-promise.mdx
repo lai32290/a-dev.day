@@ -1,0 +1,45 @@
+---
+meta:
+    title: What is Promise?
+    createdAt: 2022-03-30
+---
+
+Promise is a very important feature that you need to know as a JavaScript developer because you’re going to see it and use it all the time.
+
+## What it is a promise?
+
+As a JavaScript developer, if you have a job, probably you already made a promise to your boss.
+
+When your boss come to you and say “hey  John, can you do this task for us, please?” And once you say “Yes”, you just made a promise to your boss even no saying “I promise you”, because now, your boss is supposing that you are doing that work, it’s your responsibility to give him a respond about it now.
+
+So what’s a promise? It’s something you said to someone that you’re doing, so the person will be waiting for a result about it later.
+
+The example above is more related to our real world, but in JavaScript it’s actually pretty similar, when you fetch a endpoint or when you ask to system to give you the content of a file, you expect to have a result about it, a data or a error message can be the result, so they’re promises.
+
+## When should I use promise?
+
+But why do I need promise? Why the system can’t just do the task right now and give me what I want, instead of give a promise?
+
+When you boss asked you to just change a labor color, you know it’s an absolutely simple task and you are sure it can be done pretty quickly so do make it done right in the moment, but what about he asks you to fix a bug that “sometimes” happens? In the case probably you will need to do more investigation, maybe you spent a bunch of time just trying to reproduce it, in your experience, you know it’s not possible to define how long it’ll take to fix that, so you’ll need to make a promise to your boss and start to work on it.
+
+This is the same situation what you found when you make a requests to a endpoint, maybe you’re sure the endpoint is available at that moment but your computer have no idea how long the server is going to respond, since it’s out of its control, so your computer will give a promise like “I’m going to ask the data for you, I don’t know how long the server will respond me but I’ll let you know once it happens”.
+
+So basically, we use promise when we’re not sure how long the task can take, and once promise, always promise, once you used some function which’s a promise, all the context is going to become a promise, because if your task depends on something that you don’t know how long it can take, you don’t know how long you’re going to take to finish the task.
+
+## Fetching data from a endpoint
+
+I think it’s enough talking already, it’s time to code, in this example I’m going to fetch a list of Pokemon.
+
+```javascript
+fetch("https://pokeapi.co/api/v2/pokemon?limit=10")
+	.then(response => console.log(response))
+	.catch(err => console.error(err))
+```
+
+In this example we’re fetching to the endpoint [https://pokeapi.co/api/v2/pokemon](https://pokeapi.co/api/v2/pokemon?limit=10) and requesting to give us 10 pokemons. Once we got the result, we log it using `console.log`, once we got an error, we log it using `console.error`.
+
+So in JavaScript we pre-define what’s the action for each case when we use Promises, after that we delegate the task, it’s all done.
+
+It’s like your boss say “I need you to do this task, once you got the result do X, if you got an error do Y”, your boss already delegated all the responsibility to you so he’s going to continue to do whatever he has to do.
+
+I tried to associate it with our real life case and I hope this can help you to understand it better.
