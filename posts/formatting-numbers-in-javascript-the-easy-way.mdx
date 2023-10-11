@@ -1,0 +1,66 @@
+---
+meta:
+title: Formatting numbers in JavaScript, the easy way
+createdAt: 2023-10-11
+---
+
+In our everyday work as a frontend, it’s very common for us to receive data from backend and show it to users in website, since for backend, the most important thing is the data, the value instead of how to show it, how to display it to users, so these data usually come to us without formatting, so we can display it as way as we want (or as our designer want).
+
+Still about formatting, one type of data that we most face to format is numbers, numbers can be displayed in many different way just depends on the context.
+
+Like as plain text: 0123456
+
+As currency: USD 123,456.00
+
+As number: 123,456
+
+Based on my own experiences, I’ve tried to tackle myself, creating a function to format 012345678 to R$ 123.456,78, why’ witch’s the Brazilian currency format and this can be much more tedious than it seems
+
+But we are talking about JavaScript, there’s always something ready for us, from npm or natively.
+
+So here’s the way how we can make this job done using the native function `Intl.NumberFormat`.
+
+Formatting number to USD currency
+
+```javascript
+const number = 11304353.63;
+console.log(new Intl.NumberFormat({ style: 'currency', currency: 'USD' }).format(number));
+// 11,304,353.63
+```
+
+Formatting number to USD currency with 3 decimal digits
+
+```javascript
+const number = 11304353.6334;
+console.log(new Intl.NumberFormat({ style: 'currency', currency: 'USD', maximumFractionDigits: 3, minimumFractionDigits: 3 }).format(number));
+// 11,304,353.633
+```
+
+### Formatting number to USD currency with symbol
+
+```javascript
+const number = 11304353.63;
+console.log(new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(number));
+// $11,304,353.63
+// or
+console.log(new Intl.NumberFormat('en-US', { currencyDisplay: "code", style: 'currency', currency: 'USD' }).format(number));
+// USD 11,304,353.63
+```
+
+Formatting number to USD currency without grouping
+
+```javascript
+const number = 11304353.63;
+console.log(new Intl.NumberFormat({ style: 'currency', currency: 'USD', useGrouping: false }).format(number));
+// 11304353.63
+```
+
+Percentage
+
+```javascript
+const number = 0.5;
+console.log(new Intl.NumberFormat({ style: 'percent' }).format(number));
+// 50%
+```
+
+And there are much more options you can config to your use case, so next time when you need to format numbers in Javascript, maybe is worth to have a see on this function before crack your head.
