@@ -1,0 +1,68 @@
+---
+meta:
+  title: Getting previews sibling element in CSS
+  createdAt: 2024-02-05
+---
+
+A few days ago, when I was surfing on my Facebook, I saw someone asking for how to make a navigation menu, which the navigation menu has blue background, except the active one, but the preview and next active link also has a rounded border corner, looks something like this.
+
+![Result of navigation menu](/images/getting-previews-sibling-element-in-css/result.png)
+
+So I thought “ha, this is easy to do with some CSS” and then I started to make it in order to help that person.
+
+I started at creating the backgrounded menu and an active link, nothing special:
+
+```jsx
+<ul>
+  <li><a href="#">Home</a></li>
+  <li class="active"><a href="#">About us</a></li>
+  <li><a href="#">Service</a></li>
+  <li><a href="#">Contact</a></li>
+</ul>
+
+<style>
+  ul {
+    list-style: none;
+  }
+  li {
+    background-color: blue;
+  }
+  li.active {
+    background-color: transparent;
+  }
+</style>
+```
+
+The code above will result something similar to this:
+
+![Result of navigation menu](/images/getting-previews-sibling-element-in-css/step1.png)
+
+So let’s add some rounded corner, starting with the “next link”, the easiest one:
+
+```jsx
+<style>
+  .active + li {
+    border-top-right-radius: 10px;
+  }
+</style>
+```
+
+This code works nice, now I just need to revert the selector, like `li .active` to achieve the same result for the “previews” one, correct? No!
+
+In the beginning I thought it was so easy to make because I thought it only needs to revert the selector to achieve the same result, but the selector `li .active` is actually targeting the active one, instead of the previews one.
+
+After a few search, here it is the correct selector:
+
+```jsx
+<style>
+  li:has(+ .active) {
+    border-bottom-right-radius: 10px;
+  }
+</style>
+```
+
+This selector is going to search for `li` element which has `.active` element as next sibling, and this is what I want.
+
+You can see the result in my codepen.io in the link below:
+
+[Navigation menu (codepen.io)](https://codepen.io/lai32290/pen/JjzvjEo)
