@@ -6,13 +6,17 @@ meta:
 
 A few days ago, when I was surfing on my Facebook, I saw someone asking for how to make a navigation menu, which the navigation menu has blue background, except the active one, but the preview and next active link also has a rounded border corner, looks something like this.
 
-![Result of navigation menu](/images/getting-previews-sibling-element-in-css/result.png)
+<img
+  src="/images/getting-previews-sibling-element-in-css/result.png"
+  alt="Result of navigation menu"
+  style="max-width: 300px"
+/>
 
 So I thought “ha, this is easy to do with some CSS” and then I started to make it in order to help that person.
 
 I started at creating the backgrounded menu and an active link, nothing special:
 
-```jsx
+```html
 <ul>
   <li><a href="#">Home</a></li>
   <li class="active"><a href="#">About us</a></li>
@@ -35,11 +39,15 @@ I started at creating the backgrounded menu and an active link, nothing special:
 
 The code above will result something similar to this:
 
-![Result of navigation menu](/images/getting-previews-sibling-element-in-css/step1.png)
+<img
+  src="/images/getting-previews-sibling-element-in-css/step1.png"
+  alt="step 1 result"
+  style="max-width: 300px"
+/>
 
 So let’s add some rounded corner, starting with the “next link”, the easiest one:
 
-```jsx
+```html
 <style>
   .active + li {
     border-top-right-radius: 10px;
@@ -53,7 +61,7 @@ In the beginning I thought it was so easy to make because I thought it only need
 
 After a few search, here it is the correct selector:
 
-```jsx
+```html
 <style>
   li:has(+ .active) {
     border-bottom-right-radius: 10px;
