@@ -1,0 +1,79 @@
+---
+meta:
+    title: Transition vs Animation in CSS
+    createdAt: 2024-02-06
+---
+
+Nowadays we don’t see gif animation on the website anymore, instead we can see CSS animation everywhere, you don’t have to wait for the gif be downloaded, CSS animations are super lightweight, load super fast and can make some super cool effects with SVG.
+
+To make animations using CSS, it basically has two ways to follow with, using `transition` or `animation` property, so let’s talk about both of them.
+
+## Transition property
+
+In my point of view, I might say that `transition` property is the easier way to set a animation, it only needs to define the property that would be transitioning and the duration, for example:
+
+```css
+div {
+	width: 100%;
+	transition: width 2s;
+}
+
+div:hover {
+	width: 80%;
+}
+```
+
+In this example, the div width would be transitioning from 100% to 80% in 2 seconds.
+
+It can also be set for multiple or even every CSS properties, like:
+
+```css
+div {
+	width: 100%;
+  background: blue;
+	transition: width 2s, background 3s;
+}
+
+div:hover {
+	width: 80%;
+	background: red;
+}
+
+/* or */
+div {
+	width: 100%;
+  background: blue;
+	transition: all 2s;
+}
+
+div:hover {
+	width: 80%;
+	background: red;
+}
+```
+
+## Animation property
+
+In comparison with `transition`, the `animation` property is much more powerful and flexible, so let’s see an example first:
+
+```css
+@keyframes blink {
+  0% {
+		opacity: 1;
+  }
+	50% {
+		opacity: 0;
+	}
+  100% {
+		opacity: 1;
+	}
+}
+
+button:hover {
+	animation: blink .3s;
+}
+```
+
+In this example, once the button is hovered, the `opacity` will change from `1` to `0` and than `1` again, making the blinking effect.
+
+As you can see, it’s possible to set multiple steps during the animation, this can open up many possibilities.
