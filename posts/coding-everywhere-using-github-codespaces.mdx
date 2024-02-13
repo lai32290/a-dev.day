@@ -1,0 +1,39 @@
+---
+meta:
+    title: Coding everywhere using Github Codespaces
+    createdAt: 2024-02-12
+---
+
+This week I had to stay in my parents home but for some reason I didn’t bring my own computer with me, I wanned to do some codes but I didn’t want to install VSCode, Git and Node in my brother’s computer so I remembered there was a way to code and run my code even without install it on the machine, via Github Codespaces, so this is what I’m going to show you now, let’s go.
+
+## Setup
+
+As you see, the tool we are talking about is Github Codespaces, it does mean that our project has to be in Github, this is required.
+
+So the first step to setup the Codespaces, you need to access the project repository in Github and click on “Code” > “Codespaces” > “Create codespace on main”
+
+<img alt="Codespaces setup" src="/images/coding-everywhere-using-github-codespaces/codespaces-setup.png" style="max-width: 400px" />
+
+A new tab with a web version of VSCode should be opened.
+
+![Codesapces VSCode](/images/coding-everywhere-using-github-codespaces/codespaces-vscode-view.png)
+
+Now we are ready to code, this VSCode is hosted in Github cloud machine and we can code, execute terminal commands and even run the project in it.
+
+## Running the project
+
+In my case, I was working on a NextJS project, so what I’m going to do at this point is to install the project dependencies by the command “yarn” in terminal.
+
+![Yarn install dependencies](/images/coding-everywhere-using-github-codespaces/yarn-install-dependencies.png)
+
+The command node, npm, yarn, npx and etc are pre-installed during the setup of Codespaces based on auto detections of project’s structure and files, so we don’t have to worry about them.
+
+After installed the dependencies, just run the command “yarn dev” to run the project in dev mode.
+
+![Run yarn dev](/images/coding-everywhere-using-github-codespaces/run-yarn-dev.png)
+
+Once the project is running, it will popup a message asking you to open the running project in a new tab, so click it and be happy with your environment ready to play.
+
+Since it’s a NextJS project, you can simply editing a page and save it, the result will automatically be replied to the opened tab, if you are running other kind of projects, a rebuild command may be needed.
+
+So that’s it! now we have a completaly environment to code and run our project in any computer and without install any software locally but a web browser.
